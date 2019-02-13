@@ -15,7 +15,7 @@ module.exports = (app) => {
     })
 
     app.get('/posts/new', (req, res) => {
-        res.render('posts-new', {} )
+        res.render('posts-new', {})
     })
 
 
@@ -23,7 +23,8 @@ module.exports = (app) => {
     app.post('/posts/new', (req, res) => {
         // INSTANTIATE INSTANCE OF POST MODEL
         console.log(req.body)
-        const post = new Post({...req.body});
+        const post = new Post({ ...req.body
+        });
 
         // SAVE INSTANCE OF POST MODEL TO DB
         post.save((err, post) => {
@@ -41,6 +42,19 @@ module.exports = (app) => {
             })
             .catch(err => {
                 console.log(err.message);
+            });
+    })
+    app.get("/n/:subreddit", function(req, res) {
+        Post.find({
+                subreddit: req.params.subreddit
+            })
+            .then(posts => {
+                res.render("posts-index", {
+                    posts
+                });
+            })
+            .catch(err => {
+                console.log(err);
             });
     });
 
