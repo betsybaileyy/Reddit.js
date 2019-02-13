@@ -52,4 +52,7 @@ describe('Posts', function() {
          done(err);
      });
 });
+after(function () {
+  Post.findOneAndDelete(newPost);
+});
 });
