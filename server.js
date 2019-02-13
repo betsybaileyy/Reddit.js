@@ -12,12 +12,11 @@ app.use(expressValidator())
 
 require('./controllers/posts.js')(app)
 
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.get('/', (req, res) => {
-    res.render('home', { msg: 'Yee-haw!' })
+    res.render('posts-index', {})
 })
 
 app.listen(3000, () => {
