@@ -1,6 +1,4 @@
 const Post = require('../models/post');
-const express = require('express');
-const app = express();
 
 module.exports = (app) => {
 
@@ -8,7 +6,7 @@ module.exports = (app) => {
         Post.find({})
             .then(posts => {
                 res.render("posts-index", {
-                    posts
+                    posts: posts
                 })
             })
             .catch(err => {
@@ -16,10 +14,16 @@ module.exports = (app) => {
             })
     })
 
+    app.get('/posts/new', (req, res) => {
+        res.render('posts-new', {} )
+    })
+
+
     // CREATE
     app.post('/posts/new', (req, res) => {
         // INSTANTIATE INSTANCE OF POST MODEL
-        const post = new Post(req.body);
+        console.log(req.body)
+        const post = new Post({...req.body});
 
         // SAVE INSTANCE OF POST MODEL TO DB
         post.save((err, post) => {
@@ -39,5 +43,6 @@ module.exports = (app) => {
                 console.log(err.message);
             });
     });
+
 
 };

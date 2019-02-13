@@ -4,9 +4,8 @@
   "description": "A clone of the popular website, Reddit",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+  "test": "mocha"
+},
   "author": "Betsy Bailey",
   "license": "ISC",
   "dependencies": {
@@ -15,5 +14,10 @@
     "express-handlebars": "^3.0.0",
     "express-validator": "^5.3.1",
     "mongoose": "^5.4.11"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0"
   }
 }
