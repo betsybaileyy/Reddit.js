@@ -6,7 +6,6 @@ const expressValidator = require('express-validator')
 
 // require('./data/reddit-db')
 
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
@@ -23,19 +22,15 @@ mongoose.connect(
   }
 );
 
-
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(expressValidator())
 
-
 require('./controllers/posts.js')(app)
-
+require('./controllers/comments.js')(app)
 
 app.listen(3000, () => {
     console.log('this thing is on!! port 3000')
 })
-
 
 module.exports = app;
