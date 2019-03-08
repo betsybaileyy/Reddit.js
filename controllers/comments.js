@@ -6,9 +6,9 @@ const app = express()
 module.exports = function(app) {
 
     app.post("/posts/postId/comments", function(req, res) {
-        const comment new = Comment(req.body)
-        comment
-        .save()
+        const comment = new Comment(req.body)
+
+         comment.save()
         .then(comment => {
             return Post.findById(req.params.postId)
         })

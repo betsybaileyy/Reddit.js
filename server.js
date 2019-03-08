@@ -22,12 +22,13 @@ mongoose.connect(
   }
 );
 
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(expressValidator())
 
 require('./controllers/posts.js')(app)
 require('./controllers/comments.js')(app)
+require('./controllers/auth.js')(app)
 
 app.listen(3000, () => {
     console.log('this thing is on!! port 3000')
